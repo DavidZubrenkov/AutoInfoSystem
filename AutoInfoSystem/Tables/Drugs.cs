@@ -128,7 +128,7 @@ namespace AutoInfoSystem
             int shelflife = Convert.ToInt32(row.Cells["Срок годности (Год)"].Value);
             string imageName = row.Cells["DrugImage"].Value.ToString();
             DrugEdit ed = new DrugEdit(drugId, drugName, categoryname, manufacturername, realeseform, shelflife, imageName,this);
-            this.Hide();
+            this.Close();
             ed.ShowDialog();
 
 

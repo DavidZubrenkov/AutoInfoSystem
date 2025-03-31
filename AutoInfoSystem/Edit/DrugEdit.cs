@@ -34,7 +34,7 @@ namespace AutoInfoSystem
             textBox5.Text = name;
             comboBox1.SelectedItem = realeseform;
             textBox4.Text = shelflife.ToString();
-            string imagePath = Path.Combine(imagefolder, photo);
+            string imagePath = Path.Combine(imagefolder, imagename);
             if (File.Exists(imagePath))
             {
                 pictureBox1.Image = Image.FromFile(imagePath);
@@ -103,14 +103,14 @@ namespace AutoInfoSystem
                     string newManufacturer = comboBox2.SelectedItem.ToString();
                     string newReleaseForm = comboBox1.SelectedItem.ToString();
                     int newshellife = int.Parse(textBox4.Text);
-                    string newimagename = oldImageName;
+                    string newimagename = imagename;
 
                     if (!string.IsNullOrWhiteSpace(selecteimagepath))
                     {
                         newimagename = Path.GetFileName(selecteimagepath);
                         string SavePath = Path.Combine(imagefolder, newimagename);
-                        string oldImagePath = Path.Combine(imagefolder, oldImageName);
-                        if (oldImageName != "STOCK.png" && File.Exists(oldImageName))
+                        string oldImagePath = Path.Combine(imagefolder, imagename);
+                        if (imagename != "STOCK.png" && File.Exists(imagename))
                         {
                             File.Delete(oldImagePath);
                         }

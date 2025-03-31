@@ -97,6 +97,12 @@
     <Compile Include="Edit\FromWarehouse.Designer.cs">
       <DependentUpon>FromWarehouse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\ImportBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\ImportBD.Designer.cs">
+      <DependentUpon>ImportBD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\Directories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit\FromWarehouse.resx">
       <DependentUpon>FromWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\ImportBD.resx">
+      <DependentUpon>ImportBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Directories.resx">
       <DependentUpon>Directories.cs</DependentUpon>

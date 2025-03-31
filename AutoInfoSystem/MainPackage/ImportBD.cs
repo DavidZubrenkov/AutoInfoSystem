@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AutoInfoSystem.Main
+namespace AutoInfoSystem
 {
     public partial class ImportBD : Form
     {

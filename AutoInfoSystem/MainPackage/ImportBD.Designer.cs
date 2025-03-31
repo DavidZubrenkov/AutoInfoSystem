@@ -1,5 +1,5 @@
 ﻿
-namespace AutoInfoSystem.Main
+namespace AutoInfoSystem
 {
     partial class ImportBD
     {

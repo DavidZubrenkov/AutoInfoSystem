@@ -8,6 +8,6 @@ namespace AutoInfoSystem
 {
     public class Connection
     {
-        public MySqlConnection con1 = new MySqlConnection("server = localhost; uid=root;password=;database=db32"); // храним подключение
+        public MySqlConnection con1 = new MySqlConnection("server = localhost; uid=root;password=root;database=db32"); // храним подключение
     }
 }

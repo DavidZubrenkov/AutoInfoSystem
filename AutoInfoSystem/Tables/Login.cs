@@ -63,6 +63,13 @@ namespace AutoInfoSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(textBox1.Text == "admin" && textBox2.Text == "admin")
+            {
+                ImportBD b = new ImportBD();
+                this.Hide();
+                b.ShowDialog();
+                return;
+            }
             try
             {
                 if (AuthUser(textBox1.Text, HashPassword(textBox2.Text))) // если пароль и логин правильные - входим

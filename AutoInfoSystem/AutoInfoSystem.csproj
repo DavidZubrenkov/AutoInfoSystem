@@ -97,10 +97,10 @@
     <Compile Include="Edit\FromWarehouse.Designer.cs">
       <DependentUpon>FromWarehouse.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\ImportBD.cs">
+    <Compile Include="MainPackage\ImportBD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\ImportBD.Designer.cs">
+    <Compile Include="MainPackage\ImportBD.Designer.cs">
       <DependentUpon>ImportBD.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\Directories.cs">
@@ -145,22 +145,22 @@
     <Compile Include="Tables\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\Main.cs">
+    <Compile Include="MainPackage\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\Main.Designer.cs">
+    <Compile Include="MainPackage\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\MainGM.cs">
+    <Compile Include="MainPackage\MainGM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\MainGM.Designer.cs">
+    <Compile Include="MainPackage\MainGM.Designer.cs">
       <DependentUpon>MainGM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\MainSM.cs">
+    <Compile Include="MainPackage\MainSM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\MainSM.Designer.cs">
+    <Compile Include="MainPackage\MainSM.Designer.cs">
       <DependentUpon>MainSM.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Program.cs" />
@@ -211,7 +211,7 @@
     <EmbeddedResource Include="Edit\FromWarehouse.resx">
       <DependentUpon>FromWarehouse.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\ImportBD.resx">
+    <EmbeddedResource Include="MainPackage\ImportBD.resx">
       <DependentUpon>ImportBD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Directories.resx">
@@ -232,13 +232,13 @@
     <EmbeddedResource Include="Tables\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\Main.resx">
+    <EmbeddedResource Include="MainPackage\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\MainGM.resx">
+    <EmbeddedResource Include="MainPackage\MainGM.resx">
       <DependentUpon>MainGM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\MainSM.resx">
+    <EmbeddedResource Include="MainPackage\MainSM.resx">
       <DependentUpon>MainSM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -301,7 +301,7 @@
       <VersionMajor>2</VersionMajor>
       <VersionMinor>4</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
@@ -310,7 +310,16 @@
       <VersionMajor>8</VersionMajor>
       <VersionMinor>4</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Office">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
@@ -319,7 +328,7 @@
       <VersionMajor>5</VersionMajor>
       <VersionMinor>3</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

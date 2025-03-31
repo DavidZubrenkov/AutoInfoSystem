@@ -38,5 +38,9 @@ namespace AutoInfoSystem
             l.ShowDialog();
         }
 
+        private void MainGM_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

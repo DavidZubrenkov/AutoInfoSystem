@@ -336,5 +336,8 @@
   <ItemGroup>
     <None Include="Resources\captcha4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-replace-5953676.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

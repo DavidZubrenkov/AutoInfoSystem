@@ -18,12 +18,37 @@ namespace AutoInfoSystem
 {
     public partial class Login : Form
     {
+        int i = 0;
+        private Random rand = new Random();
+        private Image[] images;
+        private string[] CaptchaNames = {"Bw9R","Px5Y","LZ52","VB6O"};
+        private int currentImageIndex = -1;
         Connection con2 = new Connection();
         MySqlConnection con;
         public Login()
         {
             con = con2.con1;
+            load_images();
             InitializeComponent();
+        }
+        private void load_images()
+        {
+            images = new Image[4];
+            images[0] = Properties.Resources.captcha1;
+            images[1] = Properties.Resources.captcha2;
+            images[2] = Properties.Resources.captcha3;
+            images[3] = Properties.Resources.captcha4;
+        }
+        private void ShowRandImage()
+        {
+            int newIndex;
+            do
+            {
+                newIndex = rand.Next(0, images.Length);
+            } while (newIndex == currentImageIndex);
+            currentImageIndex = newIndex;
+            pictureBox6.Image = images[currentImageIndex];
+            textBox3.Clear();
         }
         private void Login_Load(object sender, EventArgs e)
         {
@@ -72,32 +97,77 @@ namespace AutoInfoSystem
             }
             try
             {
-                if (AuthUser(textBox1.Text, HashPassword(textBox2.Text))) // если пароль и логин правильные - входим
+                if(i == 1)
                 {
-                    if (User.role == 1) // получаем роль пользователя и направляем его на главную форму его роли
+                    string userInput = textBox3.Text;
+                    string correct = CaptchaNames[currentImageIndex];
+                    if(userInput == correct)
                     {
-                        Main m = new Main();
-                        this.Hide();
-                        m.ShowDialog();
-                    }
-                    else if (User.role == 2)
-                    {
-                        MainGM m = new MainGM();
-                        this.Hide();
-                        m.ShowDialog();
-                    }
-                    else if (User.role == 3)
-                    {
-                        MainSM m = new MainSM();
-                        this.Hide();
-                        m.ShowDialog();
-                    }
+                        if (AuthUser(textBox1.Text, HashPassword(textBox2.Text))) // если пароль и логин правильные - входим
+                        {
+                            if (User.role == 1) // получаем роль пользователя и направляем его на главную форму его роли
+                            {
+                                Main m = new Main();
+                                this.Hide();
+                                m.ShowDialog();
+                            }
+                            else if (User.role == 2)
+                            {
+                                MainGM m = new MainGM();
+                                this.Hide();
+                                m.ShowDialog();
+                            }
+                            else if (User.role == 3)
+                            {
+                                MainSM m = new MainSM();
+                                this.Hide();
+                                m.ShowDialog();
+                            }
 
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        i++
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Неверный логин или пароль!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    if (AuthUser(textBox1.Text, HashPassword(textBox2.Text))) // если пароль и логин правильные - входим
+                    {
+                        if (User.role == 1) // получаем роль пользователя и направляем его на главную форму его роли
+                        {
+                            Main m = new Main();
+                            this.Hide();
+                            m.ShowDialog();
+                        }
+                        else if (User.role == 2)
+                        {
+                            MainGM m = new MainGM();
+                            this.Hide();
+                            m.ShowDialog();
+                        }
+                        else if (User.role == 3)
+                        {
+                            MainSM m = new MainSM();
+                            this.Hide();
+                            m.ShowDialog();
+                        }
+
+                    }
+                    else
+                    {
+                            this.Size = new Size(766, 451);
+                            pictureBox5.Location = new Point(731, -8);
+                            ShowRandImage();
+                            i++;
+                        MessageBox.Show("Неверный логин или пароль!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }            
             }
             catch (Exception ex)
             {
@@ -198,6 +268,11 @@ namespace AutoInfoSystem
             {
                 return;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ShowRandImage();
         }
     }
 }

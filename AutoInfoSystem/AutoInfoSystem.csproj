@@ -324,5 +324,17 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captcha1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captcha2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captcha3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captcha4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

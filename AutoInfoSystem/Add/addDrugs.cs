@@ -112,13 +112,17 @@ namespace AutoInfoSystem
                     string manufucturerNmae = comboBox2.SelectedItem.ToString();
                     string imageName = Path.GetFileName(selecteimagepath);
                     string savePath = Path.Combine(recourcePath, imageName);
-                    if (Path.GetFileName(selecteimagepath) == "") // Сохранение изображения в папку проекта
+                    string thispath = Path.Combine(selecteimagepath,imageName);
+                    if(Directory.Exists(recourcePath) && Directory.GetFiles(recourcePath).Any(file => Path.GetFileName(file).Equals(imageName,StringComparison.OrdinalIgnoreCase))) // Сохранение изображения в папку проекта
                     {
 
                     }
+                    else if(imageName == "")
+                    {
+                        imageName = "STOCK.png";
+                    }
                     else
                     {
-
                         Directory.CreateDirectory(recourcePath);
                         File.Copy(selecteimagepath, savePath, true);
                     }

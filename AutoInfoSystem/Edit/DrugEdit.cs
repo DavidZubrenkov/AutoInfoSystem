@@ -21,7 +21,6 @@ namespace AutoInfoSystem
         private Drugs parentdru;
         string categ;
         private string selecteimagepath = "";
-        private string oldImageName = "";
         string manuf;
         public DrugEdit(int id, string name,string category,string manufacturer, string realeseform, int shelflife,string photo, Drugs parent)
         {
@@ -103,18 +102,41 @@ namespace AutoInfoSystem
                     string newManufacturer = comboBox2.SelectedItem.ToString();
                     string newReleaseForm = comboBox1.SelectedItem.ToString();
                     int newshellife = int.Parse(textBox4.Text);
-                    string newimagename = imagename;
-
-                    if (!string.IsNullOrWhiteSpace(selecteimagepath))
+                    string newimagename = Path.GetFileName(selecteimagepath);
+                    string SavePath = Path.Combine(imagefolder, newimagename);
+                    bool thisdir = Directory.Exists(imagefolder) && Directory.GetFiles(imagefolder).Any(file => Path.GetFileName(file).Equals(newimagename, StringComparison.OrdinalIgnoreCase));
+                    if (Directory.Exists(imagefolder) && Directory.GetFiles(imagefolder).Any(file => Path.GetFileName(file).Equals(newimagename, StringComparison.OrdinalIgnoreCase)))
                     {
-                        newimagename = Path.GetFileName(selecteimagepath);
-                        string SavePath = Path.Combine(imagefolder, newimagename);
-                        string oldImagePath = Path.Combine(imagefolder, imagename);
-                        if (imagename != "STOCK.png" && File.Exists(imagename))
+                        if (newimagename != imagename)
                         {
-                            File.Delete(oldImagePath);
+                            newimagename = Path.GetFileName(selecteimagepath);
+                            if (newimagename != "" && !thisdir)
+                            {
+                                File.Copy(selecteimagepath, SavePath, true);
+                            }
                         }
-                        File.Copy(selecteimagepath, SavePath, true);
+                    }
+                    else
+                    {
+                        if (thisdir)
+                        {
+                            newimagename = imagename;
+                            File.Copy(selecteimagepath, SavePath, true);
+                        }
+                        else
+                        {
+                            if(newimagename != imagename)
+                            {
+                                newimagename = imagename;
+                            }
+                            else
+                            {
+                                if(selecteimagepath != "")
+                                {
+                                    File.Copy(selecteimagepath, SavePath, true);
+                                }
+                            }
+                        }
                     }
                     string updateQuery = @"
                 Update drug

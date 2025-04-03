@@ -46,8 +46,9 @@ namespace AutoInfoSystem
             do
             {
                 newIndex = rand.Next(0, images.Length);
-            } while (newIndex == currentImageIndex);
-            currentImageIndex = newIndex;
+            } 
+            while (newIndex == currentImageIndex);
+             currentImageIndex = newIndex;
             pictureBox6.Image = images[currentImageIndex];
             textBox3.Clear();
         }

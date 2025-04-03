@@ -129,7 +129,7 @@ namespace AutoInfoSystem
             string imageName = row.Cells["DrugImage"].Value.ToString();
             DrugEdit ed = new DrugEdit(drugId, drugName, categoryname, manufacturername, realeseform, shelflife, imageName,this);
             this.Close();
-            ed.ShowDialog();
+            ed.Show();
 
 
         }
@@ -138,7 +138,7 @@ namespace AutoInfoSystem
         {
             con.Close();
             addDrugs dr = new addDrugs();
-            this.Hide();
+            this.Close();
             dr.ShowDialog();
         }
 

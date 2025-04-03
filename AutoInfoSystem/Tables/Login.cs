@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
@@ -88,21 +89,34 @@ namespace AutoInfoSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "admin" && textBox2.Text == "admin")
-            {
-                ImportBD b = new ImportBD();
-                this.Hide();
-                b.ShowDialog();
-                return;
-            }
             try
             {
-                if(i == 1)
+                if (i == 1)
                 {
+
                     string userInput = textBox3.Text;
                     string correct = CaptchaNames[currentImageIndex];
                     if(userInput == correct)
                     {
+                        if (textBox1.Text == "admin" && textBox2.Text == "admin")
+                        {
+                            ImportBD b = new ImportBD();
+                            this.Hide();
+                            b.ShowDialog();
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Неверный логин или пароль!\nДанная форма будет замороженна на 10 секунд!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            textBox1.Clear();
+                            textBox2.Clear();
+                            textBox3.Clear();
+                            ShowRandImage();
+                            this.Enabled = false;
+                            Thread.Sleep(10000);
+                            MessageBox.Show("Форма размороженна!", "Конец разморозки", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            this.Enabled = true;
+                        }
                         if (AuthUser(textBox1.Text, HashPassword(textBox2.Text))) // если пароль и логин правильные - входим
                         {
                             if (User.role == 1) // получаем роль пользователя и направляем его на главную форму его роли
@@ -127,16 +141,39 @@ namespace AutoInfoSystem
                         }
                         else
                         {
-
+                            MessageBox.Show("Неверный логин или пароль!\nДанная форма будет замороженна на 10 секунд!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            textBox1.Clear();
+                            textBox2.Clear();
+                            textBox3.Clear();
+                            ShowRandImage();
+                            this.Enabled = false;
+                            Thread.Sleep(10000);
+                            MessageBox.Show("Форма размороженна!", "Конец разморозки", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            this.Enabled = true;
                         }
                     }
                     else
                     {
-                        i++
+                        MessageBox.Show("Неверно введена каптча!\nДанная форма будет замороженна на 10 секунд!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        textBox1.Clear();
+                        textBox2.Clear();
+                        textBox3.Clear();
+                        ShowRandImage();
+                        this.Enabled = false;
+                        Thread.Sleep(10000);
+                        MessageBox.Show("Форма размороженна!", "Конец разморозки", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        this.Enabled = true;
                     }
                 }
                 else
                 {
+                    if (textBox1.Text == "admin" && textBox2.Text == "admin")
+                    {
+                        ImportBD b = new ImportBD();
+                        this.Hide();
+                        b.ShowDialog();
+                        return;
+                    }
                     if (AuthUser(textBox1.Text, HashPassword(textBox2.Text))) // если пароль и логин правильные - входим
                     {
                         if (User.role == 1) // получаем роль пользователя и направляем его на главную форму его роли
@@ -165,7 +202,7 @@ namespace AutoInfoSystem
                             pictureBox5.Location = new Point(731, -8);
                             ShowRandImage();
                             i++;
-                        MessageBox.Show("Неверный логин или пароль!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Неверный логин или пароль!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }            
             }

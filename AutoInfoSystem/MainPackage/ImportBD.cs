@@ -18,7 +18,7 @@ namespace AutoInfoSystem
         {
             InitializeComponent();
         }
-        MySqlConnection con = new MySqlConnection("server = localhost;uid=root;pwd=;database=db32test");
+        MySqlConnection con = new MySqlConnection("server = localhost;uid=root;pwd=root;database=db32test");
         private void button2_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog

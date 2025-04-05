@@ -16,7 +16,7 @@ namespace AutoInfoSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Drugs());
+            Application.Run(new employees());
         }
     }
 }

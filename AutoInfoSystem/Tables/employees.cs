@@ -34,14 +34,19 @@ namespace AutoInfoSystem
                 con.Close();
             }
             con.Open();
-            string query = @"SELECT employee.id, employee.Name as 'Имя', LastName 'Фамилия', Patronyc 'Отчество', Profession.Name 'Профессия', Login as 'Логин пользователя' FROM db32.employee
+            string query = @"SELECT employee.id, employee.Name as 'Имя', LastName 'Фамилия', Patronyc 'Отчество',  concat(' ',LastName,'.',Left(employee.Name,1),'.',Left(Patronyc,1),' ') as 'ФИО',  Profession.Name as 'Профессия', Login, concat(Left(Login,2),'***') as 'Логин пользователя',Telephone, Concat(left(Telephone,2),' ', '(***)', '***','-',Right(Telephone,4)) as 'Телефон' FROM db32.employee
                             Left join profession on profession.Id = employee.ProfessionId
                             Left join user on user.Id = employee.UserId;";
             MySqlDataAdapter ad = new MySqlDataAdapter(query, con);
             DataTable dt = new DataTable();
             ad.Fill(dt);
             dataGridView1.DataSource = dt;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[6].Visible = false; //login
+            dataGridView1.Columns[8].Visible = false; // телефон
 
         }
 
@@ -85,14 +90,18 @@ namespace AutoInfoSystem
                 con.Close();
             }
             con.Open();
-            string query = @"SELECT employee.id, employee.Name as 'Имя', LastName 'Фамилия', Patronyc 'Отчество', Profession.Name 'Профессия', Login as 'Логин пользователя' FROM db32.employee
+            string query = @"SELECT employee.id, employee.Name as 'Имя', LastName 'Фамилия', Patronyc 'Отчество',  concat(' ',LastName,'.',Left(employee.Name,1),'.',Left(Patronyc,1),' ') as 'ФИО',  Profession.Name as 'Профессия', Login as 'Логин пользователя',Telephone,Concat(left(Telephone,2),' ', '(***)', '***','-',Right(Telephone,4)) as 'Телефон' FROM db32.employee
                             Left join profession on profession.Id = employee.ProfessionId
                             Left join user on user.Id = employee.UserId;";
             MySqlDataAdapter ad = new MySqlDataAdapter(query, con);
             DataTable dt = new DataTable();
             ad.Fill(dt);
             dataGridView1.DataSource = dt;
+            dataGridView1.Columns[1].Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            dataGridView1.Columns[3].Visible = false;
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -100,9 +109,10 @@ namespace AutoInfoSystem
             string name = dataGridView1.SelectedCells[1].Value.ToString();
             string lastname = dataGridView1.SelectedCells[2].Value.ToString();
             string patronyc = dataGridView1.SelectedCells[3].Value.ToString();
-            string prof = dataGridView1.SelectedCells[4].Value.ToString();
-            string login = dataGridView1.SelectedCells[5].Value.ToString();
-            Edit.EditEmployee em = new Edit.EditEmployee(id,name,lastname,patronyc,prof,login);
+            string prof = dataGridView1.SelectedCells[5].Value.ToString();
+            string login = dataGridView1.SelectedCells[6].Value.ToString();
+            string telephone = dataGridView1.SelectedCells[8].Value.ToString();
+            Edit.EditEmployee em = new Edit.EditEmployee(id,name,lastname,patronyc,prof,login,telephone);
             this.Hide();
             em.ShowDialog();
         }

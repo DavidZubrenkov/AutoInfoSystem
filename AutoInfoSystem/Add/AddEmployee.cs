@@ -60,21 +60,24 @@ namespace AutoInfoSystem
             {
                 if (result == DialogResult.Yes)
                 {
-                    if (string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
+                    if (string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox4.Text) || !maskedTextBox1.MaskFull)
                     {
                         MessageBox.Show("Заполните все обязательные поля!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    string query = @"INSERT INTO employee (Name, LastName, Patronyc, ProfessionId, UserId) 
+                    int a = maskedTextBox1.TextLength;
+                    string query = @"INSERT INTO employee (Name, LastName, Patronyc, ProfessionId, UserId,Telephone) 
                  VALUES (@Name, @LastName, @Patronyc, 
                          (SELECT Id FROM profession WHERE Name = @profname), 
-                         (SELECT Id FROM user WHERE Login = @login))";
+                         (SELECT Id FROM user WHERE Login = @login),
+                         @Telephone)";
                     using (MySqlCommand com = new MySqlCommand(query, con))
                     {
                         com.Parameters.AddWithValue("@Name", textBox5.Text.Trim());
                         com.Parameters.AddWithValue("@LastName", textBox4.Text.Trim());
                         com.Parameters.AddWithValue("@Patronyc", textBox1.Text.Trim());
                         com.Parameters.AddWithValue("@profname", comboBox1.SelectedItem.ToString());
+                        com.Parameters.AddWithValue("@Telephone", maskedTextBox1.Text);
                         if (comboBox3.SelectedItem == null)
                         {
                             com.Parameters.AddWithValue("@login", null);

@@ -103,6 +103,12 @@
     <Compile Include="MainPackage\ImportBD.Designer.cs">
       <DependentUpon>ImportBD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\AllDataEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tables\AllDataEmployee.Designer.cs">
+      <DependentUpon>AllDataEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\Directories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainPackage\ImportBD.resx">
       <DependentUpon>ImportBD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\AllDataEmployee.resx">
+      <DependentUpon>AllDataEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Directories.resx">
       <DependentUpon>Directories.cs</DependentUpon>

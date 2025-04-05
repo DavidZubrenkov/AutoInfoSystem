@@ -18,8 +18,10 @@ namespace AutoInfoSystem.Edit
         private string patronyc1;
         private string prof1;
         private string userid1;
-        public EditEmployee(int id, string name, string lastname,string patronyc,string prof,string userid)
+        private string telephone1;
+        public EditEmployee(int id, string name, string lastname,string patronyc,string prof,string userid,string telephone)
         {
+            telephone1 = telephone;
             id1 = id;
             name1 = name;
             lastname1 = lastname;
@@ -74,6 +76,7 @@ namespace AutoInfoSystem.Edit
             loadProfession();
             comboBox1.SelectedItem = prof1;
             comboBox3.SelectedItem = userid1;
+            maskedTextBox1.Text = telephone1;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -84,19 +87,20 @@ namespace AutoInfoSystem.Edit
 
                 if (result == DialogResult.Yes)
                 {
-                    if (string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
+                    if (string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox4.Text) || !maskedTextBox1.MaskFull)
                     {
                         MessageBox.Show("Заполните все обязательные поля!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     string query = $@"Update employee Set 
-                Name = @Name, LastName = @LastName, Patronyc = @Patronyc, ProfessionId = (SELECT Id FROM profession WHERE Name = @profname), UserId = (SELECT Id FROM user WHERE Login = @login) where id = {id1};";
+                Name = @Name, LastName = @LastName, Patronyc = @Patronyc, ProfessionId = (SELECT Id FROM profession WHERE Name = @profname), UserId = (SELECT Id FROM user WHERE Login = @login), Telephone = @telephone where id = {id1};";
                     using (MySqlCommand com = new MySqlCommand(query, con))
                     {
                         com.Parameters.AddWithValue("@Name", textBox5.Text.Trim());
                         com.Parameters.AddWithValue("@LastName", textBox4.Text.Trim());
                         com.Parameters.AddWithValue("@Patronyc", textBox1.Text.Trim());
                         com.Parameters.AddWithValue("@profname", comboBox1.SelectedItem.ToString());
+                        com.Parameters.AddWithValue("@telephone", maskedTextBox1.Text);
                         if (comboBox3.SelectedItem == null)
                         {
                             com.Parameters.AddWithValue("@login", null);
@@ -117,6 +121,11 @@ namespace AutoInfoSystem.Edit
             {
                 MessageBox.Show($"{ex}", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

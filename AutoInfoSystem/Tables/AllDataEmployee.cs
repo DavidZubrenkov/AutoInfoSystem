@@ -21,5 +21,12 @@ namespace AutoInfoSystem.Tables
         {
 
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            employees em = new employees();
+            this.Hide();
+            em.ShowDialog();
+        }
     }
 }

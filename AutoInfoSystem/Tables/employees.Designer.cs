@@ -38,6 +38,7 @@ namespace AutoInfoSystem
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -146,12 +147,28 @@ namespace AutoInfoSystem
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Constantia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(677, 576);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(209, 43);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Данные сотрудника";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // employees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 631);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button4);
@@ -180,5 +197,6 @@ namespace AutoInfoSystem
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -56,6 +56,7 @@ namespace AutoInfoSystem.Tables
             this.maskedTextBox1.Location = new System.Drawing.Point(759, 150);
             this.maskedTextBox1.Mask = "+7 (999) 000-0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.ReadOnly = true;
             this.maskedTextBox1.Size = new System.Drawing.Size(322, 33);
             this.maskedTextBox1.TabIndex = 85;
             // 
@@ -91,6 +92,7 @@ namespace AutoInfoSystem.Tables
             this.textBox1.Location = new System.Drawing.Point(759, 47);
             this.textBox1.MaxLength = 45;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(322, 33);
             this.textBox1.TabIndex = 82;
             // 
@@ -132,6 +134,7 @@ namespace AutoInfoSystem.Tables
             this.textBox5.Location = new System.Drawing.Point(67, 47);
             this.textBox5.MaxLength = 44;
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(322, 33);
             this.textBox5.TabIndex = 75;
             // 
@@ -188,6 +191,7 @@ namespace AutoInfoSystem.Tables
             this.textBox4.Location = new System.Drawing.Point(413, 47);
             this.textBox4.MaxLength = 45;
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(322, 33);
             this.textBox4.TabIndex = 70;
             // 
@@ -200,6 +204,7 @@ namespace AutoInfoSystem.Tables
             this.textBox2.Location = new System.Drawing.Point(67, 151);
             this.textBox2.MaxLength = 44;
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(322, 33);
             this.textBox2.TabIndex = 86;
             // 
@@ -212,6 +217,7 @@ namespace AutoInfoSystem.Tables
             this.textBox3.Location = new System.Drawing.Point(413, 150);
             this.textBox3.MaxLength = 44;
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(322, 33);
             this.textBox3.TabIndex = 87;
             // 
@@ -239,7 +245,7 @@ namespace AutoInfoSystem.Tables
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AllDataEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Данные пользователя";
+            this.Text = "Данные сотрудника";
             this.Load += new System.EventHandler(this.AllDataEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

@@ -116,5 +116,18 @@ namespace AutoInfoSystem
             this.Hide();
             em.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string name = dataGridView1.SelectedCells[1].Value.ToString();
+            string lastname = dataGridView1.SelectedCells[2].Value.ToString();
+            string patronyc = dataGridView1.SelectedCells[3].Value.ToString();
+            string prof = dataGridView1.SelectedCells[5].Value.ToString();
+            string login = dataGridView1.SelectedCells[6].Value.ToString();
+            string telephone = dataGridView1.SelectedCells[8].Value.ToString();
+            Tables.AllDataEmployee al = new Tables.AllDataEmployee(name, lastname, patronyc, prof, login, telephone);
+            this.Hide();
+            al.ShowDialog();
+        }
     }
 }
